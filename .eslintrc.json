@@ -1,3 +1,16 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": [".*"],
+            "message": "Relative imports prohibited. Use absolute path."
+          }
+        ]
+      }
+    ]
+  }
 }
