@@ -10,11 +10,15 @@
     "db-setup": "node -r dotenv/config ./scripts/db-setup.js dotenv_config_path=.env"
   },
   "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
+    "jose": "^5.4.0",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
-    "serverless-mysql": "^1.5.5"
+    "serverless-mysql": "^1.5.5",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20",
