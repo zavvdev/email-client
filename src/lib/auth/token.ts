@@ -1,4 +1,4 @@
-import { JWTPayload, SignJWT, jwtVerify } from "jose";
+import { JWTPayload, jwtVerify, SignJWT } from "jose";
 import { SessionData, sessionDataSchema } from "@/lib/auth/entities";
 import {
   ENCRYPTION_ALGORITHM,

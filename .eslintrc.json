@@ -1,15 +1,38 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": ["next", "prettier"],
   "rules": {
-    "no-restricted-imports": [
+    "import/no-cycle": "error",
+    "sort-imports": [
       "error",
       {
-        "patterns": [
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "type", "internal"],
+        "pathGroups": [
           {
-            "group": [".*"],
-            "message": "Relative imports prohibited. Use absolute path."
+            "pattern": "@/app",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "@/lib/**",
+            "group": "internal",
+            "position": "after"
           }
         ]
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
       }
     ]
   }
