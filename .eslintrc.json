@@ -20,7 +20,12 @@
             "position": "before"
           },
           {
-            "pattern": "@/lib/**",
+            "pattern": "@/lib",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@/ui",
             "group": "internal",
             "position": "after"
           }
@@ -33,6 +38,71 @@
         "argsIgnorePattern": "^_",
         "destructuredArrayIgnorePattern": "^_",
         "varsIgnorePattern": "^_"
+      }
+    ],
+    "import/no-restricted-paths": [
+      "error",
+      {
+        "zones": [
+          {
+            "target": "./src/ui",
+            "from": ["./src/app"],
+            "message": "Dependency prohibited"
+          },
+          {
+            "target": "./src/lib",
+            "from": ["./src/app", "./src/ui"],
+            "message": "Dependency prohibited"
+          },
+          {
+            "target": "./src/middleware",
+            "from": ["./src/app", "./src/ui"],
+            "message": "Dependency prohibited"
+          },
+          {
+            "target": "./src/ui/icons",
+            "from": ["./src/ui/atoms", "./src/ui/molecules"],
+            "message": "Dependency prohibited"
+          },
+          {
+            "target": "./src/ui/atoms",
+            "from": ["./src/ui/molecules"],
+            "message": "Dependency prohibited"
+          },
+          {
+            "target": "./src/lib/auth",
+            "from": [
+              "./src/lib/database",
+              "./src/lib/i18n",
+              "./src/lib/utilities"
+            ],
+            "message": "Dependency prohibited"
+          },
+          {
+            "target": "./src/lib/database",
+            "from": ["./src/lib/auth", "./src/lib/i18n", "./src/lib/utilities"],
+            "message": "Dependency prohibited"
+          },
+          {
+            "target": "./src/lib/i18n",
+            "from": [
+              "./src/lib/auth",
+              "./src/lib/database",
+              "./src/lib/utilities"
+            ],
+            "message": "Dependency prohibited"
+          },
+          {
+            "target": "./src/lib/utilities",
+            "from": ["./src/lib/auth", "./src/lib/database", "./src/lib/i18n"],
+            "message": "Dependency prohibited"
+          },
+          {
+            "target": "./src/app/types",
+            "from": ["./src/app/[lng]"],
+            "message": "Dependency prohibited"
+          }
+        ]
       }
     ]
   }

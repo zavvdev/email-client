@@ -1,12 +1,12 @@
 import { dir } from "i18next";
-import Link from "next/link";
+import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
-import "@/app/styles/globals.css";
+import "@/ui/globals.css";
 import { PropsWithLocale } from "@/app/types/props";
+import { cn } from "@/lib/utilities/styles";
 import { LOCALES } from "@/lib/i18n/config";
 import { getI18n } from "@/lib/i18n";
-import { LangSwitch } from "./LangSwitch";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,23 +33,17 @@ export default async function RootLayout({
     children: React.ReactNode;
   } & PropsWithLocale
 >) {
-  const { t } = await getI18n(lng, "common");
-
   return (
     <html lang={lng} dir={dir(lng)}>
-      <body className={inter.className}>
-        <nav className="flex justify-between align-middle p-3 border-b-gray-100 border-2">
-          <ul className="flex align-middle gap-2">
-            <li>
-              <Link href={`/${lng}`}>{t("nav.home")}</Link>
-            </li>
-            <li>
-              <Link href={`/${lng}/login`}>{t("nav.login")}</Link>
-            </li>
-          </ul>
-          <LangSwitch lng={lng} />
-        </nav>
-        <div className="p-3">{children}</div>
+      <body className={cn("min-h-screen bg-background", inter.className)}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
