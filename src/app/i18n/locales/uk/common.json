@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "title": "✉️",
+    "description": "Prototyp emejl klijentu"
+  },
+
+  "theme": {
+    "light": "Svitla",
+    "dark": "Temna",
+    "system": "Systemna"
+  }
+}

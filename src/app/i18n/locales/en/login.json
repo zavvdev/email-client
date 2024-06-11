@@ -1,3 +1,10 @@
 {
-  "title": "Login!"
+  "title": "Login",
+  "form": {
+    "email": "Email",
+    "password": "Password",
+    "submit": "Login"
+  },
+  "signup_text": "Don't have an account?",
+  "signup": "Sign Up"
 }

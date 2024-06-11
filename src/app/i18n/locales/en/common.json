@@ -1,12 +1,7 @@
 {
   "metadata": {
     "title": "✉️",
-    "description": "A simple email client that allows you to send and receive emails."
-  },
-
-  "nav": {
-    "home": "Home",
-    "login": "Login"
+    "description": "Email client prototype"
   },
 
   "theme": {

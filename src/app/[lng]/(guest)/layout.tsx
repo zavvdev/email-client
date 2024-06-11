@@ -12,7 +12,7 @@ export default async function GuestLayout({
 
   return (
     <div className="flex flex-col align-middle justify-between h-screen p-4">
-      <div className="flex justify-center">{children}</div>
+      <div className="flex justify-center flex-1">{children}</div>
       <div className="flex justify-center gap-2">
         <ThemeToggle
           t={{

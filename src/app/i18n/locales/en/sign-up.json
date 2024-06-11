@@ -1,0 +1,13 @@
+{
+  "title": "Sign Up",
+  "form": {
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "submit": "Sign Up"
+  },
+  "login_text": "Already have an account?",
+  "login": "Log In"
+}

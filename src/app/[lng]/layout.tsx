@@ -34,7 +34,7 @@ export default async function RootLayout({
   } & PropsWithLocale
 >) {
   return (
-    <html lang={lng} dir={dir(lng)}>
+    <html suppressHydrationWarning={true} lang={lng} dir={dir(lng)}>
       <body className={cn("min-h-screen bg-background", inter.className)}>
         <ThemeProvider
           attribute="class"
