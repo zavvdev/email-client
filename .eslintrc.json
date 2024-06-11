@@ -92,13 +92,13 @@
             "message": "Dependency prohibited"
           },
           {
-            "target": "./src/infra/auth",
+            "target": "./src/infra/encryption",
             "from": ["./src/infra/database"],
             "message": "Dependency prohibited"
           },
           {
             "target": "./src/infra/database",
-            "from": ["./src/infra/auth"],
+            "from": ["./src/infra/encryption"],
             "message": "Dependency prohibited"
           }
         ]

@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { PASSWORD_HASH_SALT_ROUNDS } from "@/infra/auth/config";
+import { PASSWORD_HASH_SALT_ROUNDS } from "@/infra/encryption/config";
 
 export function hashPassword(input: string): Promise<string> {
   return bcrypt.hash(input, PASSWORD_HASH_SALT_ROUNDS);
