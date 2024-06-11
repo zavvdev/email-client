@@ -1,4 +1,4 @@
-import { LOCALES } from "@/lib/i18n/config";
+import { LOCALES } from "@/app/i18n/config";
 
 export function switchPathnameLang(pathname: string, nextLang: string): string {
   const segments = pathname.split("/").filter(Boolean);

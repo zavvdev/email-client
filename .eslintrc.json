@@ -15,17 +15,17 @@
         "groups": ["builtin", "external", "type", "internal"],
         "pathGroups": [
           {
-            "pattern": "@/app",
+            "pattern": "@/infra",
             "group": "internal",
             "position": "before"
           },
           {
-            "pattern": "@/lib",
+            "pattern": "@/domain",
             "group": "internal",
             "position": "after"
           },
           {
-            "pattern": "@/ui",
+            "pattern": "@/app",
             "group": "internal",
             "position": "after"
           }
@@ -45,61 +45,60 @@
       {
         "zones": [
           {
-            "target": "./src/ui",
-            "from": ["./src/app"],
+            "target": "./src/app",
+            "from": ["./src/infra", "./src/middleware.ts"],
             "message": "Dependency prohibited"
           },
           {
-            "target": "./src/lib",
-            "from": ["./src/app", "./src/ui"],
+            "target": "./src/domain",
+            "from": ["./src/app", "./src/middleware.ts"],
             "message": "Dependency prohibited"
           },
           {
-            "target": "./src/middleware",
-            "from": ["./src/app", "./src/ui"],
-            "message": "Dependency prohibited"
-          },
-          {
-            "target": "./src/ui/icons",
-            "from": ["./src/ui/atoms", "./src/ui/molecules"],
-            "message": "Dependency prohibited"
-          },
-          {
-            "target": "./src/ui/atoms",
-            "from": ["./src/ui/molecules"],
-            "message": "Dependency prohibited"
-          },
-          {
-            "target": "./src/lib/auth",
-            "from": [
-              "./src/lib/database",
-              "./src/lib/i18n",
-              "./src/lib/utilities"
-            ],
-            "message": "Dependency prohibited"
-          },
-          {
-            "target": "./src/lib/database",
-            "from": ["./src/lib/auth", "./src/lib/i18n", "./src/lib/utilities"],
-            "message": "Dependency prohibited"
-          },
-          {
-            "target": "./src/lib/i18n",
-            "from": [
-              "./src/lib/auth",
-              "./src/lib/database",
-              "./src/lib/utilities"
-            ],
-            "message": "Dependency prohibited"
-          },
-          {
-            "target": "./src/lib/utilities",
-            "from": ["./src/lib/auth", "./src/lib/database", "./src/lib/i18n"],
+            "target": "./src/infra",
+            "from": ["./src/app", "./src/domain", "./src/middleware.ts"],
             "message": "Dependency prohibited"
           },
           {
             "target": "./src/app/types",
-            "from": ["./src/app/[lng]"],
+            "from": [
+              "./src/app/styles",
+              "./src/app/i18n",
+              "./src/app/components"
+            ],
+            "message": "Dependency prohibited"
+          },
+          {
+            "target": "./src/app/styles",
+            "from": ["./src/app/i18n", "./src/app/components"],
+            "message": "Dependency prohibited"
+          },
+          {
+            "target": "./src/app/i18n",
+            "from": ["./src/app/components"],
+            "message": "Dependency prohibited"
+          },
+          {
+            "target": "./src/app/components/icons",
+            "from": [
+              "./src/app/components/atoms",
+              "./src/app/components/molecules"
+            ],
+            "message": "Dependency prohibited"
+          },
+          {
+            "target": "./src/app/components/atoms",
+            "from": ["./src/app/components/molecules"],
+            "message": "Dependency prohibited"
+          },
+          {
+            "target": "./src/infra/auth",
+            "from": ["./src/infra/database"],
+            "message": "Dependency prohibited"
+          },
+          {
+            "target": "./src/infra/database",
+            "from": ["./src/infra/auth"],
             "message": "Dependency prohibited"
           }
         ]

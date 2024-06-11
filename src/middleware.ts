@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { DEFAULT_LOCALE, LOCALES } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, LOCALES } from "@/app/i18n/config";
 
 export const config = {
   matcher: [

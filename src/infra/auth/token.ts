@@ -1,10 +1,10 @@
 import { JWTPayload, jwtVerify, SignJWT } from "jose";
-import { SessionData, sessionDataSchema } from "@/lib/auth/entities";
+import { SessionData, sessionDataSchema } from "@/infra/auth/entities";
 import {
   ENCRYPTION_ALGORITHM,
   EXPIRATION_TIME,
   SECRET,
-} from "@/lib/auth/config";
+} from "@/infra/auth/config";
 
 function getSecretKey() {
   if (typeof SECRET === "string") {

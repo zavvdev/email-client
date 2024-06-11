@@ -2,14 +2,14 @@
 
 import * as React from "react";
 import { useTheme } from "next-themes";
-import { Button } from "@/ui/atoms/button";
+import { Button } from "@/app/components/atoms/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/ui/atoms/dropdown-menu";
-import { Icons } from "@/ui/icons";
+} from "@/app/components/atoms/dropdown-menu";
+import { Icons } from "@/app/components/icons";
 
 interface Props {
   t: {

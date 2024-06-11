@@ -1,7 +1,7 @@
 import { PropsWithLocale } from "@/app/types/props";
-import { getI18n } from "@/lib/i18n";
-import { LangSwitch } from "@/ui/molecules/lang-switch";
-import { ThemeToggle } from "@/ui/molecules/theme-toggle";
+import { getI18n } from "@/app/i18n";
+import { LangSwitch } from "@/app/components/molecules/lang-switch";
+import { ThemeToggle } from "@/app/components/molecules/theme-toggle";
 
 export default async function Home({ params }: PropsWithLocale) {
   const { t } = await getI18n(params.lng, "home");

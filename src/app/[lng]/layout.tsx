@@ -2,11 +2,11 @@ import { dir } from "i18next";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
-import "@/ui/globals.css";
+import "@/app/styles/globals.css";
 import { PropsWithLocale } from "@/app/types/props";
-import { cn } from "@/lib/utilities/styles";
-import { LOCALES } from "@/lib/i18n/config";
-import { getI18n } from "@/lib/i18n";
+import { cn } from "@/app/styles/utils";
+import { LOCALES } from "@/app/i18n/config";
+import { getI18n } from "@/app/i18n";
 
 const inter = Inter({ subsets: ["latin"] });
 

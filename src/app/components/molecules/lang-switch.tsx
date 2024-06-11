@@ -1,15 +1,15 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { Button } from "@/ui/atoms/button";
-import { LOCALES } from "@/lib/i18n/config";
-import { switchPathnameLang } from "@/lib/i18n/utils";
+import { Button } from "@/app/components/atoms/button";
+import { LOCALES } from "@/app/i18n/config";
+import { switchPathnameLang } from "@/app/i18n/utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/ui/atoms/dropdown-menu";
+} from "@/app/components/atoms/dropdown-menu";
 import { Icons } from "../icons";
 
 export function LangSwitch() {

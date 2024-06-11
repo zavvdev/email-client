@@ -1,7 +1,7 @@
 import { createInstance } from "i18next";
 import resourcesToBackend from "i18next-resources-to-backend";
 import { initReactI18next } from "react-i18next/initReactI18next";
-import { DEFAULT_LOCALE, I18nNamespace, LOCALES } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, I18nNamespace, LOCALES } from "@/app/i18n/config";
 
 const initI18next = async (lng: string, ns: I18nNamespace) => {
   const i18nInstance = createInstance();
