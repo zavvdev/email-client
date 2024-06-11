@@ -6,6 +6,31 @@
     "email": "Emejl",
     "password": "Gaslo",
     "confirm_password": "Pidtverditʼ gaslo",
-    "submit": "Zarejestruvatysja"
+    "submit": "Zarejestruvatysja",
+    "errors": {
+      "first_name": {
+        "required": "Imʼja je obovʼjazkove"
+      },
+      "last_name": {
+        "required": "Prizvyšče je obovʼjazkove"
+      },
+      "email": {
+        "required": "Emejl je obovʼjazkovyj",
+        "invalid": "Nepravylʼnyj emejl"
+      },
+      "password": {
+        "required": "Gaslo je obovʼjazkove",
+        "min_length": "Gaslo maje skladaty jak minimum 8 symvoliv"
+      },
+      "confirm_password": {
+        "required": "Pidtverdžennja gasla je obovʼjazkovym",
+        "match": "Gasla ne spivpadajutʼ",
+        "min_length": "Gaslo maje skladaty jak minimum 8 symvoliv"
+      }
+    }
+  },
+  "additional": {
+    "login_text": "Maješ vže akaunt?",
+    "login": "Vhid"
   }
 }

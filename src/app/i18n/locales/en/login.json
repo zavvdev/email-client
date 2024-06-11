@@ -5,6 +5,8 @@
     "password": "Password",
     "submit": "Login"
   },
-  "signup_text": "Don't have an account?",
-  "signup": "Sign Up"
+  "addition": {
+    "signup_text": "Don't have an account?",
+    "signup": "Sign Up"
+  }
 }

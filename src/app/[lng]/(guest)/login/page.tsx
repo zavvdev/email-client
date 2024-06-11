@@ -27,12 +27,12 @@ export default async function Login({ params }: PropsWithLocale) {
         />
         <Button type="submit">{t("form.submit")}</Button>
         <div className="text-center text-gray-500">
-          {t("signup_text")}{" "}
+          {t("addition.signup_text")}{" "}
           <Link
             href={`/${params.lng}/sign-up`}
             className="text-black hover:underline"
           >
-            {t("signup")}
+            {t("addition.signup")}
           </Link>
         </div>
       </form>

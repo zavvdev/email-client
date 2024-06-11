@@ -4,5 +4,9 @@
     "email": "Emejl",
     "password": "Gaslo",
     "submit": "Uvijty"
+  },
+  "addition": {
+    "signup_text": "Nemaje akauntu?",
+    "signup": "Rejestracija"
   }
 }

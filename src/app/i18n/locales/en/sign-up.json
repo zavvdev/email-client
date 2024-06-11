@@ -6,8 +6,31 @@
     "email": "Email",
     "password": "Password",
     "confirm_password": "Confirm Password",
-    "submit": "Sign Up"
+    "submit": "Sign Up",
+    "errors": {
+      "first_name": {
+        "required": "First name is required"
+      },
+      "last_name": {
+        "required": "Last name is required"
+      },
+      "email": {
+        "required": "Email is required",
+        "invalid": "Email is invalid"
+      },
+      "password": {
+        "required": "Password is required",
+        "min_length": "Password must be at least 8 characters"
+      },
+      "confirm_password": {
+        "required": "Confirm password is required",
+        "match": "Passwords do not match",
+        "min_length": "Password must be at least 8 characters"
+      }
+    }
   },
-  "login_text": "Already have an account?",
-  "login": "Log In"
+  "additional": {
+    "login_text": "Already have an account?",
+    "login": "Log In"
+  }
 }
