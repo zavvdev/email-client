@@ -26,6 +26,10 @@
         "required": "Pidtverdžennja gasla je obovʼjazkovym",
         "match": "Gasla ne spivpadajutʼ",
         "min_length": "Gaslo maje skladaty jak minimum 8 symvoliv"
+      },
+      "process": {
+        "unexpected": "Nespodivanaja pamylka. Sprobujte pizniše",
+        "user_exists": "Korystuvač vže isnuje"
       }
     }
   },

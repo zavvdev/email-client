@@ -1,7 +1,7 @@
 import { SafeParseError } from "zod";
 
-export function extractSchemaFormErrors<T>(validatedFields: SafeParseError<T>) {
-  return validatedFields.error.errors.reduce(
+export function extractSchemaErrors<T>(parsed: SafeParseError<T>) {
+  return parsed.error.errors.reduce(
     (acc, error) => ({ ...acc, [error.path[0]]: error.message }),
     {},
   );

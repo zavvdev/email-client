@@ -1,3 +1,5 @@
+import "server-only";
+
 import bcrypt from "bcrypt";
 import { PASSWORD_HASH_SALT_ROUNDS } from "@/infra/encryption/config";
 

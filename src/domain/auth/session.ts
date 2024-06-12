@@ -1,3 +1,5 @@
+import "server-only";
+
 import { cookies } from "next/headers";
 import { TOKEN_COOKIE_NAME } from "@/domain/auth/config";
 import { SessionData, sessionDataSchema } from "@/domain/auth/entities";

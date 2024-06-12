@@ -1,3 +1,5 @@
+import "server-only";
+
 import { JWTPayload, jwtVerify, SignJWT } from "jose";
 import {
   ENCRYPTION_ALGORITHM,

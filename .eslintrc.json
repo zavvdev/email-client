@@ -15,9 +15,14 @@
         "groups": ["builtin", "external", "type", "internal"],
         "pathGroups": [
           {
-            "pattern": "@/infra",
+            "pattern": "@/entities",
             "group": "internal",
             "position": "before"
+          },
+          {
+            "pattern": "@/infra",
+            "group": "internal",
+            "position": "after"
           },
           {
             "pattern": "@/domain",
@@ -57,6 +62,16 @@
           {
             "target": "./src/infra",
             "from": ["./src/app", "./src/domain", "./src/middleware.ts"],
+            "message": "Dependency prohibited"
+          },
+          {
+            "target": "./src/entities",
+            "from": [
+              "./src/app",
+              "./src/domain",
+              "./src/middleware.ts",
+              "./src/infra"
+            ],
             "message": "Dependency prohibited"
           },
           {

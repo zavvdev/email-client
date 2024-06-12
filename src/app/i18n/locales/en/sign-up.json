@@ -26,6 +26,10 @@
         "required": "Confirm password is required",
         "match": "Passwords do not match",
         "min_length": "Password must be at least 8 characters"
+      },
+      "process": {
+        "unexpected": "An unexpected error occurred. Try again later",
+        "user_exists": "User already exists"
       }
     }
   },

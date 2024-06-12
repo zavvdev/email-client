@@ -6,6 +6,7 @@ export const formDataSchema = t
     first_name: t.string({ message: "required" }),
 
     last_name: t.string({ message: "required" }),
+
     email: t.string({ message: "required" }).email("invalid"),
 
     password: t

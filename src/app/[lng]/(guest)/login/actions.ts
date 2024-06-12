@@ -1,22 +1,21 @@
 "use server";
 
-import { signUp } from "@/domain/auth/sign-up";
+import { login } from "@/domain/auth/login";
 
-export async function signUpAction(
+export async function loginAction(
   _prevState: {
     errors: Record<string, string> | null;
   },
   formData: FormData,
 ) {
   try {
-    const res = await signUp(formData);
+    const res = await login(formData);
     console.log(res);
 
     return {
       errors: null,
     };
   } catch (e: unknown) {
-    console.error(e);
     return {
       errors: (e as Error).cause as Record<string, string> | null,
     };
