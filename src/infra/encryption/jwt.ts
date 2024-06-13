@@ -14,11 +14,11 @@ function getSecretKey() {
   throw new Error("Invalid SECRET");
 }
 
-export function encryptToken<T>(data: T, exp?: string): Promise<string> {
+export function encryptToken<T>(data: T): Promise<string> {
   return new SignJWT(data as unknown as JWTPayload)
     .setProtectedHeader({ alg: ENCRYPTION_ALGORITHM })
     .setIssuedAt()
-    .setExpirationTime(exp || EXPIRATION_TIME)
+    .setExpirationTime(EXPIRATION_TIME)
     .sign(getSecretKey());
 }
 

@@ -48,9 +48,12 @@ export function Form({ lng, t }: Props) {
         placeholder={t.form.password}
       />
       <SubmitButton>{t.form.submit}</SubmitButton>
-      <div className="text-center text-gray-500">
-        {t.additional.signup_text}{" "}
-        <Link href={`/${lng}/sign-up`} className="text-black hover:underline">
+      <div className="text-center">
+        <span className="opacity-55">{t.additional.signup_text} </span>
+        <Link
+          href={`/${lng}/sign-up`}
+          className="text-black dark:text-white hover:underline"
+        >
           {t.additional.signup}
         </Link>
       </div>

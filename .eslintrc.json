@@ -77,6 +77,7 @@
           {
             "target": "./src/app/types",
             "from": [
+              "./src/app/routes",
               "./src/app/styles",
               "./src/app/i18n",
               "./src/app/components"
@@ -85,12 +86,16 @@
           },
           {
             "target": "./src/app/styles",
-            "from": ["./src/app/i18n", "./src/app/components"],
+            "from": [
+              "./src/app/routes",
+              "./src/app/i18n",
+              "./src/app/components"
+            ],
             "message": "Dependency prohibited"
           },
           {
             "target": "./src/app/i18n",
-            "from": ["./src/app/components"],
+            "from": ["./src/app/routes", "./src/app/components"],
             "message": "Dependency prohibited"
           },
           {

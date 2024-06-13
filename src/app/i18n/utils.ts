@@ -13,3 +13,8 @@ export function switchPathnameLang(pathname: string, nextLang: string): string {
 
   return pathname;
 }
+
+export function getLangFromPathname(pathname: string): string | null {
+  const lang = pathname.split("/")[1];
+  return Object.values(LOCALES).includes(lang as any) ? lang : null;
+}

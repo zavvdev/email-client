@@ -1,5 +1,6 @@
 import "server-only";
 
+import { z as t } from "zod";
 import { User, userSchema } from "@/entities/User";
 import { dbq } from "@/infra/database/connect";
 
@@ -15,6 +16,27 @@ class UserRepo {
     }
 
     return null;
+  }
+
+  public async create(
+    user: Omit<User, "id" | "created_at"> & { password: string },
+  ): Promise<Pick<User, "id">> {
+    const validUser = userSchema
+      .omit({ id: true, created_at: true })
+      .merge(t.object({ password: t.string() }))
+      .parse(user);
+
+    const result = await dbq<{ insertId: number }>(
+      `INSERT INTO users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)`,
+      [
+        validUser.first_name,
+        validUser.last_name,
+        validUser.email,
+        validUser.password,
+      ],
+    );
+
+    return { id: result.insertId };
   }
 }
 
