@@ -22,7 +22,7 @@ export async function signUp(formData: FormData): Promise<void> {
       });
     }
 
-    const user = await userRepo.selectByEmail(validatedFields.data.email);
+    const user = await userRepo.findByEmail(validatedFields.data.email);
 
     if (user) {
       throw new Error("User already exists", {

@@ -28,7 +28,7 @@
         "min_length": "Gaslo maje skladaty jak minimum 8 symvoliv"
       },
       "process": {
-        "unexpected": "Nespodivanaja pamylka. Sprobujte pizniše",
+        "unexpected": "Nespodivana pomylka. Sprobujte pizniše",
         "user_exists": "Korystuvač vže isnuje"
       }
     }

@@ -8,4 +8,10 @@ export const userSchema = t.object({
   created_at: t.date(),
 });
 
+export const userWithPasswordSchema = userSchema.merge(
+  t.object({ password: t.string() }),
+);
+
+export type UserWithPassword = t.infer<typeof userWithPasswordSchema>;
+
 export type User = t.infer<typeof userSchema>;

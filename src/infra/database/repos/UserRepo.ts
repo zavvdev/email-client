@@ -1,29 +1,39 @@
 import "server-only";
 
-import { z as t } from "zod";
-import { User, userSchema } from "@/entities/User";
+import * as R from "remeda";
+import {
+  User,
+  UserWithPassword,
+  userWithPasswordSchema,
+} from "@/entities/User";
 import { dbq } from "@/infra/database/connect";
 
 class UserRepo {
-  public async selectByEmail(email: string): Promise<User | null> {
+  public async findByEmailWithPassword(
+    email: string,
+  ): Promise<UserWithPassword | null> {
     const result = await dbq<User[]>(
-      `SELECT id, first_name, last_name, email, created_at FROM users WHERE email = ?`,
+      `SELECT id, first_name, last_name, email, password, created_at FROM users WHERE email = ?`,
       [email],
     );
 
     if (result?.[0]) {
-      return userSchema.parse(result[0]);
+      return userWithPasswordSchema.parse(result[0]);
     }
 
     return null;
   }
 
+  public async findByEmail(email: string): Promise<User | null> {
+    const result = await this.findByEmailWithPassword(email);
+    return result ? R.omit(result, ["password"]) : null;
+  }
+
   public async create(
-    user: Omit<User, "id" | "created_at"> & { password: string },
+    user: Omit<UserWithPassword, "id" | "created_at">,
   ): Promise<Pick<User, "id">> {
-    const validUser = userSchema
+    const validUser = userWithPasswordSchema
       .omit({ id: true, created_at: true })
-      .merge(t.object({ password: t.string() }))
       .parse(user);
 
     const result = await dbq<{ insertId: number }>(
@@ -36,7 +46,9 @@ class UserRepo {
       ],
     );
 
-    return { id: result.insertId };
+    return userWithPasswordSchema
+      .pick({ id: true })
+      .parse({ id: result.insertId });
   }
 }
 

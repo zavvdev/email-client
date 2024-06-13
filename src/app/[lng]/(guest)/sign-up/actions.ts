@@ -12,11 +12,11 @@ export async function signUpAction(
 ) {
   try {
     await signUp(formData);
+    // doesn't work. Need to fix. Works in finally for some reason
+    redirect(appUrl("/emails"));
   } catch (e: unknown) {
     return {
       errors: (e as Error).cause as Record<string, string> | null,
     };
-  } finally {
-    redirect(appUrl("/emails"));
   }
 }

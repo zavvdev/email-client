@@ -3,7 +3,19 @@
   "form": {
     "email": "Emejl",
     "password": "Gaslo",
-    "submit": "Uvijty"
+    "submit": "Uvijty",
+    "errors": {
+      "email": {
+        "required": "Emejl je obovʼazkovyj"
+      },
+      "password": {
+        "required": "Gaslo je obovʼazkove"
+      },
+      "process": {
+        "unexpected": "Nespodivana pomylka. Sprobujte pizniše",
+        "not_found": "Korystuvač z takym emejlom i gaslom ne znajdenyj"
+      }
+    }
   },
   "additional": {
     "signup_text": "Nemaje akauntu?",

@@ -3,7 +3,19 @@
   "form": {
     "email": "Email",
     "password": "Password",
-    "submit": "Login"
+    "submit": "Login",
+    "errors": {
+      "email": {
+        "required": "Email is required"
+      },
+      "password": {
+        "required": "Password is required"
+      },
+      "process": {
+        "unexpected": "An unexpected error occurred. Try again later",
+        "not_found": "We cannot find an account with that email address and password"
+      }
+    }
   },
   "additional": {
     "signup_text": "Don't have an account?",
