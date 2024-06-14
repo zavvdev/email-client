@@ -6,7 +6,11 @@ import { userRepo } from "@/infra/database/repos/UserRepo";
 import { hashPassword } from "@/infra/encryption/password";
 import { setSession } from "../session";
 
-export async function signUp(formData: FormData): Promise<void> {
+interface ReturnType {
+  errors: Record<string, string> | null;
+}
+
+export async function signUp(formData: FormData): Promise<ReturnType> {
   try {
     const validatedFields = await formDataSchema.safeParseAsync({
       first_name: formData.get("first_name"),
@@ -17,19 +21,19 @@ export async function signUp(formData: FormData): Promise<void> {
     });
 
     if (validatedFields.error) {
-      throw new Error("Validation Error", {
-        cause: extractSchemaErrors(validatedFields),
-      });
+      return {
+        errors: extractSchemaErrors(validatedFields),
+      };
     }
 
     const user = await userRepo.findByEmail(validatedFields.data.email);
 
     if (user) {
-      throw new Error("User already exists", {
-        cause: {
+      return {
+        errors: {
           process: "user_exists",
         },
-      });
+      };
     }
 
     const hashedPassword = await hashPassword(validatedFields.data.password);
@@ -42,11 +46,13 @@ export async function signUp(formData: FormData): Promise<void> {
     });
 
     setSession({ user_id: id });
-  } catch (e: any) {
-    throw new Error("Sign Up Error", {
-      cause: e.cause || {
+
+    return { errors: null };
+  } catch {
+    return {
+      errors: {
         process: "unexpected",
       },
-    });
+    };
   }
 }

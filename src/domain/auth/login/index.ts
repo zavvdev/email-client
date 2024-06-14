@@ -7,14 +7,18 @@ import { userRepo } from "@/infra/database/repos/UserRepo";
 import { comparePasswords } from "@/infra/encryption/password";
 
 const notFoundError = () => {
-  return new Error("User not found", {
-    cause: {
+  return {
+    errors: {
       process: "not_found",
     },
-  });
+  };
 };
 
-export async function login(formData: FormData) {
+interface ReturnType {
+  errors: Record<string, string> | null;
+}
+
+export async function login(formData: FormData): Promise<ReturnType> {
   try {
     const validatedFields = await formDataSchema.safeParseAsync({
       email: formData.get("email"),
@@ -22,9 +26,9 @@ export async function login(formData: FormData) {
     });
 
     if (validatedFields.error) {
-      throw new Error("Validation Error", {
-        cause: extractSchemaErrors(validatedFields),
-      });
+      return {
+        errors: extractSchemaErrors(validatedFields),
+      };
     }
 
     const user = await userRepo.findByEmailWithPassword(
@@ -32,7 +36,7 @@ export async function login(formData: FormData) {
     );
 
     if (!user) {
-      throw notFoundError();
+      return notFoundError();
     }
 
     const passwordMatch = await comparePasswords(
@@ -41,15 +45,17 @@ export async function login(formData: FormData) {
     );
 
     if (!passwordMatch) {
-      throw notFoundError();
+      return notFoundError();
     }
 
     setSession({ user_id: user.id });
-  } catch (e: any) {
-    throw new Error("Login Error", {
-      cause: e.cause || {
+
+    return { errors: null };
+  } catch {
+    return {
+      errors: {
         process: "unexpected",
       },
-    });
+    };
   }
 }

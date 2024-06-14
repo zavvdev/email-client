@@ -29,7 +29,7 @@
       },
       "process": {
         "unexpected": "An unexpected error occurred. Try again later",
-        "user_exists": "User already exists"
+        "user_exists": "We cannot create an account with that email address"
       }
     }
   },

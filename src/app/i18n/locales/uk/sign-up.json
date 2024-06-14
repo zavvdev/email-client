@@ -29,7 +29,7 @@
       },
       "process": {
         "unexpected": "Nespodivana pomylka. Sprobujte pizniše",
-        "user_exists": "Korystuvač vže isnuje"
+        "user_exists": "My ne možemo zarejestruvaty korystuvača z takym emejlom"
       }
     }
   },

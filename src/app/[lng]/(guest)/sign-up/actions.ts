@@ -4,19 +4,14 @@ import { redirect } from "next/navigation";
 import { signUp } from "@/domain/auth/sign-up";
 import { appUrl } from "@/app/routes";
 
-export async function signUpAction(
-  _prevState: {
-    errors: Record<string, string> | null;
-  },
-  formData: FormData,
-) {
-  try {
-    await signUp(formData);
-    // doesn't work. Need to fix. Works in finally for some reason
-    redirect(appUrl("/emails"));
-  } catch (e: unknown) {
-    return {
-      errors: (e as Error).cause as Record<string, string> | null,
-    };
+export async function signUpAction(_prevState: any, formData: FormData) {
+  const result = await signUp(formData);
+
+  if (result.errors) {
+    return result;
   }
+
+  redirect(appUrl("/emails"));
+
+  return { errors: null };
 }
