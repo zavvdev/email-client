@@ -28,3 +28,7 @@ export async function setSession(session: SessionData): Promise<void> {
     httpOnly: true,
   });
 }
+
+export function destroySession(): void {
+  cookies().set(TOKEN_COOKIE_NAME, "", { expires: new Date(0) });
+}

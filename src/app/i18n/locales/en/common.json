@@ -8,5 +8,12 @@
     "light": "Light",
     "dark": "Dark",
     "system": "System"
+  },
+
+  "folderName": {
+    "inbox": "Inbox",
+    "sent": "Sent",
+    "starred": "Starred",
+    "spam": "Spam"
   }
 }
