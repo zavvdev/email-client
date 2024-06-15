@@ -64,7 +64,7 @@ function migrate() {
       await db.query(`
         CREATE TABLE folders (
           id INT AUTO_INCREMENT PRIMARY KEY,
-          name VARCHAR(50) NOT NULL
+          name VARCHAR(50) NOT NULL UNIQUE
         );
       `);
 

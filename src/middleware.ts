@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/domain/auth/session";
 import { DEFAULT_LOCALE, LOCALES } from "@/app/i18n/config";
-import { appUrl, isAuthRoute } from "@/app/routes";
+import { appUrl, getStartRoute, isAuthRoute } from "@/app/routes";
 import { getLangFromPathname } from "./app/i18n/utils";
 
 export const config = {
@@ -22,7 +22,7 @@ export async function middleware(request: NextRequest) {
     const session = await getSession();
 
     if (isAuthRoute(pathname) && session) {
-      return NextResponse.redirect(appUrl("/emails", lang));
+      return NextResponse.redirect(getStartRoute(lang));
     }
 
     if (!isAuthRoute(pathname) && !session) {

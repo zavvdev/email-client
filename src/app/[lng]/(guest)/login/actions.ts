@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { appUrl } from "@/app/routes";
+import { getStartRoute } from "@/app/routes";
 import { login } from "@/domain/auth/login";
 
 export async function loginAction(_prevState: any, formData: FormData) {
@@ -11,7 +11,7 @@ export async function loginAction(_prevState: any, formData: FormData) {
     return result;
   }
 
-  redirect(appUrl("/emails"));
+  redirect(getStartRoute());
 
   return { errors: null };
 }

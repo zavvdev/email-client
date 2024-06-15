@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { signUp } from "@/domain/auth/sign-up";
-import { appUrl } from "@/app/routes";
+import { getStartRoute } from "@/app/routes";
 
 export async function signUpAction(_prevState: any, formData: FormData) {
   const result = await signUp(formData);
@@ -11,7 +11,7 @@ export async function signUpAction(_prevState: any, formData: FormData) {
     return result;
   }
 
-  redirect(appUrl("/emails"));
+  redirect(getStartRoute());
 
   return { errors: null };
 }
