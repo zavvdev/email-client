@@ -10,9 +10,9 @@ interface Props {
 export function FormErrors({ errors, center }: Props) {
   return (
     <>
-      {errors.map((error) => (
+      {errors.map((error, index) => (
         <p
-          key={error}
+          key={`${error}-${index}`}
           className={cn("text-red-500 text-sm", {
             "text-center": center,
           })}

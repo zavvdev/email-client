@@ -16,5 +16,11 @@
     "starred": "Starred"
   },
 
-  "critical_client_error": "Oops! Something went wrong. Please try again later."
+  "critical_client_error": "Oops! Something went wrong. Please try again later.",
+
+  "label": {
+    "no_messages": "No messages",
+    "sent_to": "To",
+    "me": "Me"
+  }
 }

@@ -16,5 +16,11 @@
     "starred": "Zbereženi"
   },
 
-  "critical_client_error": "Joj! Ščoś pišlo ne tak. Sprobujte pizniše."
+  "critical_client_error": "Joj! Ščoś pišlo ne tak. Sprobujte pizniše.",
+
+  "label": {
+    "no_messages": "Nemaje povidomleń",
+    "sent_to": "Do",
+    "me": "Ja"
+  }
 }

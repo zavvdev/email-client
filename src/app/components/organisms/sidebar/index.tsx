@@ -3,7 +3,7 @@ import { ThemeToggle } from "@/app/components/molecules/theme-toggle";
 import { getI18n } from "@/app/i18n";
 import { Folder } from "@/app/components/organisms/sidebar/folder";
 import { LogoutButton } from "@/app/components/molecules/logout-button";
-import { getEmailsCountByFolder } from "@/domain/emails";
+import { getMessagesCountByFolder } from "@/domain/emails";
 import { Skeleton } from "./skeleton";
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 
 export async function Sidebar({ lng }: Props) {
   const { t } = await getI18n(lng, "common");
-  const folderAmounts = await getEmailsCountByFolder();
+  const folderAmounts = await getMessagesCountByFolder();
 
   return (
     <div className="flex flex-col justify-between h-full pb-3">

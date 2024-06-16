@@ -28,7 +28,7 @@ export function Folder({ name, href, children, count }: Props) {
       className={cn(
         "flex justify-between align-middle gap-2 p-2 hover:bg-gray-100 rounded dark:hover:bg-zinc-800 transition-all",
         {
-          "bg-gray-100 dark:bg-zinc-800": pathname === href,
+          "bg-gray-100 dark:bg-zinc-800": pathname.includes(href),
         },
       )}
     >
@@ -37,7 +37,7 @@ export function Folder({ name, href, children, count }: Props) {
         <span>{children}</span>
       </div>
       {count > 0 && (
-        <div className="text-xs text-black bg-gray-200 dark:bg-zinc-700 dark:text-white rounded-full p-1 flex items-center justify-center max-w-7 w-7 h-7">
+        <div className="text-xs text-black bg-gray-200 dark:bg-zinc-700 dark:text-white rounded-full p-1 flex items-center justify-center max-w-6 w-6 h-6">
           <span className="truncate">{count}</span>
         </div>
       )}
