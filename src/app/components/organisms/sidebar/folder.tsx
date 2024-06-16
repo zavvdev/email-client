@@ -17,7 +17,6 @@ const iconByFolderName = {
   [FOLDER_NAMES.inbox]: <Icons.Inbox width="1.2rem" />,
   [FOLDER_NAMES.starred]: <Icons.Star width="1.2rem" />,
   [FOLDER_NAMES.sent]: <Icons.Send width="1.2rem" />,
-  [FOLDER_NAMES.spam]: <Icons.ShieldAlert width="1.2rem" />,
 };
 
 export function Folder({ name, href, children, count }: Props) {

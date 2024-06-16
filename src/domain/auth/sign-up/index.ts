@@ -45,7 +45,7 @@ export async function signUp(formData: FormData): Promise<ReturnType> {
       password: hashedPassword,
     });
 
-    setSession({ user_id: id });
+    setSession({ user_id: id, user_email: validatedFields.data.email });
 
     return { errors: null };
   } catch {

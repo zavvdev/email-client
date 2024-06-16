@@ -25,8 +25,7 @@ function clear() {
   return exec(
     async (db) => {
       // Drop tables with foreign key constraints first
-      await db.query(`DROP TABLE IF EXISTS email_folders;`);
-      await db.query(`DROP TABLE IF EXISTS folders;`);
+      await db.query(`DROP TABLE IF EXISTS starred;`);
       await db.query(`DROP TABLE IF EXISTS emails;`);
       await db.query(`DROP TABLE IF EXISTS users;`);
     },
@@ -62,19 +61,12 @@ function migrate() {
       `);
 
       await db.query(`
-        CREATE TABLE folders (
+        CREATE TABLE starred (
           id INT AUTO_INCREMENT PRIMARY KEY,
-          name VARCHAR(50) NOT NULL UNIQUE
-        );
-      `);
-
-      await db.query(`
-        CREATE TABLE email_folders (
-          id INT AUTO_INCREMENT PRIMARY KEY,
-          folder_id INT NOT NULL,
           email_id INT NOT NULL,
-          FOREIGN KEY (folder_id) REFERENCES folders(id),
-          FOREIGN KEY (email_id) REFERENCES emails(id)
+          user_id INT NOT NULL,
+          FOREIGN KEY (email_id) REFERENCES emails(id) ON DELETE CASCADE,
+          FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
         );
       `);
     },
@@ -83,27 +75,9 @@ function migrate() {
   );
 }
 
-function seed() {
-  return exec(
-    async (db) => {
-      await db.query(`
-        INSERT INTO folders (name) 
-        VALUES 
-          ('inbox'),
-          ('sent'),
-          ('starred'),
-          ('spam');
-      `);
-    },
-    "Tables seeded.",
-    "Unable to seed tables.",
-  );
-}
-
 async function main() {
   await clear();
   await migrate();
-  await seed();
 }
 
 main()

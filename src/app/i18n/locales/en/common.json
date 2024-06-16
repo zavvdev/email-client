@@ -10,10 +10,11 @@
     "system": "System"
   },
 
-  "folderName": {
+  "folder_name": {
     "inbox": "Inbox",
     "sent": "Sent",
-    "starred": "Starred",
-    "spam": "Spam"
-  }
+    "starred": "Starred"
+  },
+
+  "critical_client_error": "Oops! Something went wrong. Please try again later."
 }

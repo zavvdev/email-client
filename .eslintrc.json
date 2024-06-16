@@ -102,13 +102,22 @@
             "target": "./src/app/components/icons",
             "from": [
               "./src/app/components/atoms",
-              "./src/app/components/molecules"
+              "./src/app/components/molecules",
+              "./src/app/components/organisms"
             ],
             "message": "Dependency prohibited"
           },
           {
             "target": "./src/app/components/atoms",
-            "from": ["./src/app/components/molecules"],
+            "from": [
+              "./src/app/components/molecules",
+              "./src/app/components/organisms"
+            ],
+            "message": "Dependency prohibited"
+          },
+          {
+            "target": "./src/app/components/molecules",
+            "from": ["./src/app/components/organisms"],
             "message": "Dependency prohibited"
           },
           {

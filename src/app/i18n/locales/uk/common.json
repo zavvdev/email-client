@@ -8,5 +8,13 @@
     "light": "Svitla",
     "dark": "Temna",
     "system": "Systemna"
-  }
+  },
+
+  "folder_name": {
+    "inbox": "Vhidni",
+    "sent": "Vidpravleni",
+    "starred": "Zbereženi"
+  },
+
+  "critical_client_error": "Joj! Ščoś pišlo ne tak. Sprobujte pizniše."
 }

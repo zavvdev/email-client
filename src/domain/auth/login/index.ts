@@ -48,7 +48,7 @@ export async function login(formData: FormData): Promise<ReturnType> {
       return notFoundError();
     }
 
-    setSession({ user_id: user.id });
+    setSession({ user_id: user.id, user_email: user.email });
 
     return { errors: null };
   } catch {

@@ -7,6 +7,7 @@ import { PropsWithLocale } from "@/app/types/props";
 import { cn } from "@/app/styles/utils";
 import { LOCALES } from "@/app/i18n/config";
 import { getI18n } from "@/app/i18n";
+import ErrorBoundary from "../components/molecules/error-boundary";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,17 +34,21 @@ export default async function RootLayout({
     children: React.ReactNode;
   } & PropsWithLocale
 >) {
+  const { t } = await getI18n(lng, "common");
+
   return (
     <html suppressHydrationWarning={true} lang={lng} dir={dir(lng)}>
       <body className={cn("min-h-screen bg-background", inter.className)}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <ErrorBoundary text={t("critical_client_error")}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );
