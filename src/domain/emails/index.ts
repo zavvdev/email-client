@@ -25,7 +25,7 @@ export async function getMessagesByFolder(folder: string): Promise<Message[]> {
 
   switch (folder) {
     case FOLDER_NAMES.inbox:
-      return emailsRepo.getInbox(session!.user_email);
+      return emailsRepo.getInbox(session!.user_id, session!.user_email);
     case FOLDER_NAMES.sent:
       return emailsRepo.getSent(session!.user_id);
     case FOLDER_NAMES.starred:

@@ -22,5 +22,9 @@
     "no_messages": "Nemaje povidomleń",
     "sent_to": "Do",
     "me": "Ja"
+  },
+
+  "message_toolbar": {
+    "create": "Napysaty"
   }
 }

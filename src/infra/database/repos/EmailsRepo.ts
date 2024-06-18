@@ -10,10 +10,12 @@ SELECT
   ur.first_name AS recipient_first_name, 
   ur.last_name AS recipient_last_name,
   us.first_name AS sender_first_name,
-  us.last_name AS sender_last_name
+  us.last_name AS sender_last_name,
+  IF(s.user_id = ? AND e.id = s.email_id, TRUE, FALSE) AS starred
 FROM emails AS e 
 LEFT JOIN users AS ur ON e.recipient_email = ur.email
 INNER JOIN users AS us ON e.sender_id = us.id
+LEFT JOIN starred AS s ON s.email_id = e.id
 WHERE ${where}
 `;
 
@@ -23,12 +25,13 @@ SELECT
   ur.first_name AS recipient_first_name, 
   ur.last_name AS recipient_last_name,
   us.first_name AS sender_first_name,
-  us.last_name AS sender_last_name 
+  us.last_name AS sender_last_name,
+  IF(s.user_id = ? AND e.id = s.email_id, TRUE, FALSE) AS starred
 FROM starred AS s 
 INNER JOIN emails AS e ON s.email_id = e.id 
 LEFT JOIN users AS ur ON e.recipient_email = ur.email
 INNER JOIN users AS us ON e.sender_id = us.id
-WHERE user_id = ?`;
+WHERE s.user_id = ?`;
 
 class EmailsRepo {
   public async getAmountInFolders({
@@ -66,10 +69,10 @@ class EmailsRepo {
     });
   }
 
-  public async getInbox(userEmail: string): Promise<Message[]> {
+  public async getInbox(userId: number, userEmail: string): Promise<Message[]> {
     const result = await dbq<Message[]>(
       emailSelectQuery(`recipient_email = ?`),
-      [userEmail],
+      [userId, userEmail],
     );
 
     return t.array(messageSchema).parse(result);
@@ -78,18 +81,23 @@ class EmailsRepo {
   public async getSent(userId: number): Promise<Message[]> {
     const result = await dbq<Message[]>(emailSelectQuery(`sender_id = ?`), [
       userId,
+      userId,
     ]);
 
     return t.array(messageSchema).parse(result);
   }
 
   public async getStarred(userId: number): Promise<Message[]> {
-    const result = await dbq<Message[]>(starredSelectQuery(), [userId]);
+    const result = await dbq<Message[]>(starredSelectQuery(), [userId, userId]);
     return t.array(messageSchema).parse(result);
   }
 
-  public async getOne(id: string): Promise<Message> {
-    const result = await dbq<Message[]>(emailSelectQuery("id = ?"), [id]);
+  public async getOne(userId: number, id: number): Promise<Message> {
+    const result = await dbq<Message[]>(emailSelectQuery("id = ?"), [
+      userId,
+      id,
+    ]);
+
     return messageSchema.parse(result[0]);
   }
 }

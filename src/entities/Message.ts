@@ -10,6 +10,7 @@ export const messageSchema = t.object({
   recipient_email: t.string(),
   recipient_first_name: t.string().nullable(),
   recipient_last_name: t.string().nullable(),
+  starred: t.number(),
   created_at: t.date(),
 });
 
