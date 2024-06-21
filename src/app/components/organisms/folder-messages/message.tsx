@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
 import { cn } from "@/app/styles/utils";
 
 interface Props {
@@ -14,8 +14,16 @@ interface Props {
   divide?: boolean;
 }
 
-export function Message({ name, subject, body, date, href, divide }: Props) {
-  const pathname = usePathname();
+export function Message({
+  id,
+  name,
+  subject,
+  body,
+  date,
+  href,
+  divide,
+}: Props) {
+  const params = useParams();
 
   return (
     <>
@@ -24,7 +32,7 @@ export function Message({ name, subject, body, date, href, divide }: Props) {
         className={cn(
           "flex items-start justify-between gap-2 p-4 hover:bg-gray-100 dark:hover:bg-zinc-800 cursor-pointer rounded-lg",
           {
-            "bg-gray-100 dark:bg-zinc-800": pathname.includes(href),
+            "bg-gray-100 dark:bg-zinc-800": Number(params.messageId) === id,
           },
         )}
       >

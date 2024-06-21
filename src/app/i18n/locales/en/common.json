@@ -20,7 +20,10 @@
 
   "label": {
     "no_messages": "No messages",
+    "no_email": "No message selected",
+    "not_found_email": "Message not found",
     "sent_to": "To",
+    "sent_from": "From",
     "me": "Me"
   },
 

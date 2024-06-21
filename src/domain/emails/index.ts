@@ -34,3 +34,8 @@ export async function getMessagesByFolder(folder: string): Promise<Message[]> {
       return [];
   }
 }
+
+export async function getMessage(id: number): Promise<Message | null> {
+  const session = await getSession();
+  return emailsRepo.getOne(session!.user_id, id);
+}

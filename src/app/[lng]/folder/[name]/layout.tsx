@@ -19,7 +19,7 @@ export default function FolderLayout({ children, params }: Props) {
           <FolderMessages name={params.name} lng={params.lng} />
         </Suspense>
       </div>
-      <div className="flex-[2] p-2">{children}</div>
+      <div className="flex-[2] p-2 pb-0">{children}</div>
     </div>
   );
 }

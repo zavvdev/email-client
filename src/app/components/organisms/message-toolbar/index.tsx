@@ -8,9 +8,10 @@ import { Icons } from "@/app/components/icons";
 interface Props {
   t: Record<string, string>;
   isMessageStarred?: boolean;
+  isNotFound?: boolean;
 }
 
-export function MessageToolbar({ t, isMessageStarred }: Props) {
+export function MessageToolbar({ t, isMessageStarred, isNotFound }: Props) {
   const params = useParams();
 
   return (
@@ -22,19 +23,23 @@ export function MessageToolbar({ t, isMessageStarred }: Props) {
         <Icons.Pen width="1.1rem" />
         {t.create}
       </Button>
-      {R.isNonNullish(isMessageStarred) && (
-        <Button variant="ghost" size="icon" className="w-10">
-          {isMessageStarred ? (
-            <Icons.StarOff width="1.1rem" />
-          ) : (
-            <Icons.Star width="1.1rem" />
+      {!isNotFound && (
+        <>
+          {R.isNonNullish(isMessageStarred) && (
+            <Button variant="ghost" size="icon" className="w-10">
+              {isMessageStarred ? (
+                <Icons.StarOff width="1.1rem" />
+              ) : (
+                <Icons.Star width="1.1rem" />
+              )}
+            </Button>
           )}
-        </Button>
-      )}
-      {R.isNonNullish(params.messageId) && (
-        <Button variant="ghost" size="icon">
-          <Icons.Trash width="1.1rem" />
-        </Button>
+          {R.isNonNullish(params.messageId) && (
+            <Button variant="ghost" size="icon">
+              <Icons.Trash width="1.1rem" />
+            </Button>
+          )}
+        </>
       )}
     </div>
   );

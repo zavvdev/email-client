@@ -52,7 +52,7 @@ function migrate() {
         CREATE TABLE emails (
           id INT AUTO_INCREMENT PRIMARY KEY,
           subject VARCHAR(100) NOT NULL,
-          body VARCHAR(500) NOT NULL,
+          body VARCHAR(2500) NOT NULL,
           sender_id INT NOT NULL,
           recipient_email VARCHAR(100) NOT NULL,
           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

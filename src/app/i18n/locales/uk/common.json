@@ -20,7 +20,10 @@
 
   "label": {
     "no_messages": "Nemaje povidomleń",
+    "no_email": "Emejs ne obrano",
+    "not_found_email": "Emejl ne znajdeno",
     "sent_to": "Do",
+    "sent_from": "Vid",
     "me": "Ja"
   },
 

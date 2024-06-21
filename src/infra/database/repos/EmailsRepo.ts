@@ -92,13 +92,13 @@ class EmailsRepo {
     return t.array(messageSchema).parse(result);
   }
 
-  public async getOne(userId: number, id: number): Promise<Message> {
-    const result = await dbq<Message[]>(emailSelectQuery("id = ?"), [
+  public async getOne(userId: number, id: number): Promise<Message | null> {
+    const result = await dbq<Message[]>(emailSelectQuery("e.id = ?"), [
       userId,
       id,
     ]);
 
-    return messageSchema.parse(result[0]);
+    return result.length ? messageSchema.parse(result[0]) : null;
   }
 }
 
