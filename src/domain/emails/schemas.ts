@@ -14,6 +14,6 @@ export const deleteMessageSchema = t.object({
   id: t.number(),
 });
 
-export const starMessageSchema = t.object({
+export const markMessageSchema = t.object({
   id: t.number(),
 });

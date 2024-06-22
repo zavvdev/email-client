@@ -6,8 +6,8 @@ import { FOLDER_NAMES } from "@/domain/emails/config";
 import { Message } from "@/entities/Message";
 import {
   deleteMessageSchema,
+  markMessageSchema,
   sendMessageSchema,
-  starMessageSchema,
 } from "@/domain/emails/schemas";
 import { extractSchemaErrors } from "@/domain/utils";
 
@@ -100,7 +100,7 @@ export async function markMessage(formData: FormData): Promise<boolean> {
   try {
     const session = await getSession();
 
-    const validatedFields = starMessageSchema.parse({
+    const validatedFields = markMessageSchema.parse({
       id: Number(formData.get("id")),
     });
 
