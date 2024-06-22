@@ -26,4 +26,4 @@
 
 `pnpm analyze-code` - same as `pnpm lint && pnpm prettier`
 
-`pnpm shad` - for installing UI components. Example `pnpm shad add button --path=./src/ui/atoms`. Reference: https://ui.shadcn.com/
+`pnpm shad` - for installing UI components. Example `pnpm shad add button --path=./src/app/components/atoms`. Reference: https://ui.shadcn.com/
