@@ -36,7 +36,7 @@ export function ModalCompose({ t }: Props) {
     R.pipe(
       errors,
       R.entries(),
-      R.map(([k, v]) => t.form.errors[k][v]),
+      R.map(([k, v]) => t.form.error[k][v]),
     );
 
   return (
@@ -60,9 +60,9 @@ export function ModalCompose({ t }: Props) {
         <form action={action} className="flex flex-col gap-3">
           <Input
             required
+            type="email"
             placeholder={t.form.recipient}
             name="recipient_email"
-            type="email"
           />
           <Input
             required

@@ -37,7 +37,8 @@
       "submit": "Send",
       "error": {
         "recipient_email": {
-          "required": "Recipient email is required"
+          "required": "Recipient email is required",
+          "invalid": "Recipient email is invalid"
         },
         "subject": {
           "required": "Subject is required"

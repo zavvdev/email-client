@@ -37,7 +37,8 @@
       "submit": "Vidpravyty",
       "error": {
         "recipient_email": {
-          "required": "Emejl otrymuvača obov'jazkovyj"
+          "required": "Emejl otrymuvača obov'jazkovyj",
+          "invalid": "Emejl otrymuvača nepravyl'nyj"
         },
         "subject": {
           "required": "Tema obov'jazkova"
