@@ -28,29 +28,37 @@
   },
 
   "message_toolbar": {
-    "create": "Napysaty",
-    "form": {
-      "label": "Nove povidomlennja",
-      "recipient": "Emejl otrymuvača",
-      "subject": "Tema",
-      "message": "Povidomlennja",
-      "submit": "Vidpravyty",
-      "error": {
-        "recipient_email": {
-          "required": "Emejl otrymuvača obov'jazkovyj",
-          "invalid": "Emejl otrymuvača nepravyl'nyj"
-        },
-        "subject": {
-          "required": "Tema obov'jazkova"
-        },
-        "message": {
-          "required": "Povidomlennja obov'jazkove",
-          "max": "Povidomlennja zanadto dovge (maksymal'na kil'kist' znakiv: 2500)"
-        },
-        "process": {
-          "unexpected": "Ščoś pišlo ne tak. Sprobujte pizniše."
+    "compose": {
+      "label": "Napysaty",
+      "form": {
+        "label": "Nove povidomlennja",
+        "recipient": "Emejl otrymuvača",
+        "subject": "Tema",
+        "message": "Povidomlennja",
+        "submit": "Vidpravyty",
+        "error": {
+          "recipient_email": {
+            "required": "Emejl otrymuvača obov'jazkovyj",
+            "invalid": "Emejl otrymuvača nepravyl'nyj"
+          },
+          "subject": {
+            "required": "Tema obov'jazkova"
+          },
+          "message": {
+            "required": "Povidomlennja obov'jazkove",
+            "max": "Povidomlennja zanadto dovge (maksymal'na kil'kist' znakiv: 2500)"
+          },
+          "process": {
+            "unexpected": "Ščoś pišlo ne tak. Sprobujte pizniše."
+          }
         }
       }
+    },
+    "delete": {
+      "confirm": "Vy dijsno hočete vydalyty ce povidomlennja?",
+      "confirm_description": "Cja operacija ne može buty skasovana",
+      "submit": "Vydalyty",
+      "error": "Stalasja pomylka pid čas vydalennja povidomlennja. Sprobujte pizniše."
     }
   }
 }

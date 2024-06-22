@@ -58,6 +58,7 @@ export function Form({ lng, t }: Props) {
         autoComplete="new-password"
         placeholder={t.form.confirm_password}
       />
+      <input type="hidden" name="lng" value={lng} />
       <SubmitButton>{t.form.submit}</SubmitButton>
       <div className="text-center">
         <span className="opacity-55">{t.additional.login_text} </span>

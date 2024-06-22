@@ -11,7 +11,7 @@ export async function signUpAction(_prevState: any, formData: FormData) {
     return result;
   }
 
-  redirect(getStartRoute());
+  redirect(getStartRoute(formData.get("lng") as string));
 
   return { errors: null };
 }

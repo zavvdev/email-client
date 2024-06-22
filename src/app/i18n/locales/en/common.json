@@ -28,29 +28,37 @@
   },
 
   "message_toolbar": {
-    "create": "Compose",
-    "form": {
-      "label": "New message",
-      "recipient": "Recipient email",
-      "subject": "Subject",
-      "message": "Message",
-      "submit": "Send",
-      "error": {
-        "recipient_email": {
-          "required": "Recipient email is required",
-          "invalid": "Recipient email is invalid"
-        },
-        "subject": {
-          "required": "Subject is required"
-        },
-        "message": {
-          "required": "Message is required",
-          "max": "Message is too long (max 2500 characters)"
-        },
-        "process": {
-          "unexpected": "Unexpected error occurred. Please try again later."
+    "compose": {
+      "label": "Compose",
+      "form": {
+        "label": "New message",
+        "recipient": "Recipient email",
+        "subject": "Subject",
+        "message": "Message",
+        "submit": "Send",
+        "error": {
+          "recipient_email": {
+            "required": "Recipient email is required",
+            "invalid": "Recipient email is invalid"
+          },
+          "subject": {
+            "required": "Subject is required"
+          },
+          "message": {
+            "required": "Message is required",
+            "max": "Message is too long (max 2500 characters)"
+          },
+          "process": {
+            "unexpected": "Unexpected error occurred. Please try again later."
+          }
         }
       }
+    },
+    "delete": {
+      "confirm": "Are you sure you want to delete this message?",
+      "confirm_description": "This action cannot be undone.",
+      "submit": "Delete",
+      "error": "Error occurred while deleting the message. Please try again later."
     }
   }
 }

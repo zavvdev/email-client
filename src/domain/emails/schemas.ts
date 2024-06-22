@@ -9,3 +9,7 @@ export const sendMessageSchema = t.object({
     .min(1, "required")
     .max(MESSAGE_BODY_MAX_LENGTH, "max"),
 });
+
+export const deleteMessageSchema = t.object({
+  id: t.number({ message: "required" }),
+});

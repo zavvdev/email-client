@@ -47,7 +47,7 @@ export function ModalCompose({ t }: Props) {
           className="flex items-center gap-2 justify-center"
         >
           <Icons.Pen width="1.1rem" />
-          {t.create}
+          {t.label}
         </Button>
       </DialogTrigger>
       <DialogContent

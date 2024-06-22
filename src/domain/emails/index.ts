@@ -4,7 +4,7 @@ import { emailsRepo } from "@/infra/database/repos/EmailsRepo";
 import { getSession } from "@/domain/auth/session";
 import { FOLDER_NAMES } from "@/domain/emails/config";
 import { Message } from "@/entities/Message";
-import { sendMessageSchema } from "./schemas";
+import { deleteMessageSchema, sendMessageSchema } from "./schemas";
 import { extractSchemaErrors } from "../utils";
 
 export async function getMessagesCountByFolder() {
@@ -75,5 +75,19 @@ export async function sendMessage(formData: FormData): Promise<{
         process: "unexpected",
       },
     };
+  }
+}
+
+export async function deleteMessage(formData: FormData): Promise<boolean> {
+  try {
+    const validatedFields = deleteMessageSchema.parse({
+      id: Number(formData.get("id")),
+    });
+
+    await emailsRepo.deleteOne(validatedFields.id);
+
+    return true;
+  } catch {
+    return false;
   }
 }

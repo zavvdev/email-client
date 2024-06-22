@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { Button } from "@/app/components/atoms/button";
 import { Icons } from "@/app/components/icons";
 import { ModalCompose } from "./modal-compose";
+import { ModalDelete } from "./modal-delete";
 
 interface Props {
   t: Record<string, any>;
@@ -17,7 +18,7 @@ export function MessageToolbar({ t, isMessageStarred, isNotFound }: Props) {
 
   return (
     <div className="border-b dark:border-zinc-800 pb-4 flex items-center gap-1">
-      <ModalCompose t={t} />
+      <ModalCompose t={t.compose} />
       {!isNotFound && (
         <>
           {R.isNonNullish(isMessageStarred) && (
@@ -29,11 +30,7 @@ export function MessageToolbar({ t, isMessageStarred, isNotFound }: Props) {
               )}
             </Button>
           )}
-          {R.isNonNullish(params.messageId) && (
-            <Button variant="ghost" size="icon">
-              <Icons.Trash width="1.1rem" />
-            </Button>
-          )}
+          {R.isNonNullish(params.messageId) && <ModalDelete t={t.delete} />}
         </>
       )}
     </div>

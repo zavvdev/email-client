@@ -120,6 +120,10 @@ class EmailsRepo {
     );
     return t.number().parse(result.insertId);
   }
+
+  public async deleteOne(id: number): Promise<void> {
+    await dbq("DELETE FROM emails WHERE id = ?", [id]);
+  }
 }
 
 export const emailsRepo = new EmailsRepo();
