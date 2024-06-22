@@ -4,6 +4,8 @@ import { emailsRepo } from "@/infra/database/repos/EmailsRepo";
 import { getSession } from "@/domain/auth/session";
 import { FOLDER_NAMES } from "@/domain/emails/config";
 import { Message } from "@/entities/Message";
+import { sendMessageSchema } from "./schemas";
+import { extractSchemaErrors } from "../utils";
 
 export async function getMessagesCountByFolder() {
   const session = await getSession();
@@ -38,4 +40,40 @@ export async function getMessagesByFolder(folder: string): Promise<Message[]> {
 export async function getMessage(id: number): Promise<Message | null> {
   const session = await getSession();
   return emailsRepo.getOne(session!.user_id, id);
+}
+
+export async function sendMessage(formData: FormData): Promise<{
+  messageId?: number;
+  errors: Record<string, string> | null;
+}> {
+  try {
+    const session = await getSession();
+
+    const validatedFields = await sendMessageSchema.safeParseAsync({
+      recipient_email: formData.get("recipient_email"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+    });
+
+    if (validatedFields.error) {
+      return {
+        errors: extractSchemaErrors(validatedFields),
+      };
+    }
+
+    const id = await emailsRepo.createOne({
+      userId: session!.user_id,
+      recipientEmail: validatedFields.data.recipient_email,
+      subject: validatedFields.data.subject,
+      message: validatedFields.data.message,
+    });
+
+    return { errors: null, messageId: id };
+  } catch {
+    return {
+      errors: {
+        process: "unexpected",
+      },
+    };
+  }
 }

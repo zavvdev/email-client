@@ -52,7 +52,7 @@ export default async function FolderMessages({ name, lng }: Props) {
   };
 
   return (
-    <div>
+    <div className="pb-24">
       {messages.length === 0 ? (
         <Empty>{t("label.no_messages")}</Empty>
       ) : (

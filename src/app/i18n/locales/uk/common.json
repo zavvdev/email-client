@@ -20,14 +20,36 @@
 
   "label": {
     "no_messages": "Nemaje povidomleń",
-    "no_email": "Emejs ne obrano",
-    "not_found_email": "Emejl ne znajdeno",
+    "no_email": "Povidomlennja ne obrano",
+    "not_found_email": "Povidomlennja ne znajdeno",
     "sent_to": "Do",
     "sent_from": "Vid",
     "me": "Ja"
   },
 
   "message_toolbar": {
-    "create": "Napysaty"
+    "create": "Napysaty",
+    "form": {
+      "label": "Nove povidomlennja",
+      "recipient": "Emejl otrymuvača",
+      "subject": "Tema",
+      "message": "Povidomlennja",
+      "submit": "Vidpravyty",
+      "error": {
+        "recipient_email": {
+          "required": "Emejl otrymuvača obov'jazkovyj"
+        },
+        "subject": {
+          "required": "Tema obov'jazkova"
+        },
+        "message": {
+          "required": "Povidomlennja obov'jazkove",
+          "max": "Povidomlennja zanadto dovge (maksymal'na kil'kist' znakiv: 2500)"
+        },
+        "process": {
+          "unexpected": "Ščoś pišlo ne tak. Sprobujte pizniše."
+        }
+      }
+    }
   }
 }

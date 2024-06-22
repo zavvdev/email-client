@@ -17,6 +17,7 @@ LEFT JOIN users AS ur ON e.recipient_email = ur.email
 INNER JOIN users AS us ON e.sender_id = us.id
 LEFT JOIN starred AS s ON s.email_id = e.id
 WHERE ${where}
+ORDER BY e.created_at DESC
 `;
 
 const starredSelectQuery = () => `
@@ -31,7 +32,8 @@ FROM starred AS s
 INNER JOIN emails AS e ON s.email_id = e.id 
 LEFT JOIN users AS ur ON e.recipient_email = ur.email
 INNER JOIN users AS us ON e.sender_id = us.id
-WHERE s.user_id = ?`;
+WHERE s.user_id = ?
+ORDER BY e.created_at DESC`;
 
 class EmailsRepo {
   public async getAmountInFolders({
@@ -99,6 +101,24 @@ class EmailsRepo {
     ]);
 
     return result.length ? messageSchema.parse(result[0]) : null;
+  }
+
+  public async createOne({
+    userId,
+    recipientEmail,
+    subject,
+    message,
+  }: {
+    userId: number;
+    recipientEmail: string;
+    subject: string;
+    message: string;
+  }): Promise<number> {
+    const result = await dbq<{ insertId: number }>(
+      "INSERT INTO emails (subject, body, sender_id, recipient_email) VALUES (?, ?, ?, ?)",
+      [subject, message, userId, recipientEmail],
+    );
+    return t.number().parse(result.insertId);
   }
 }
 

@@ -5,7 +5,7 @@ import { useFormState } from "react-dom";
 import * as R from "remeda";
 import { FormErrors } from "@/app/components/atoms/form-errors";
 import { Input } from "@/app/components/atoms/input";
-import { SubmitButton } from "./submit-button";
+import { SubmitButton } from "@/app/components/molecules/submit-button";
 import { loginAction } from "./actions";
 
 interface Props {
