@@ -1,7 +1,7 @@
 "use client";
 
 import { Component, PropsWithChildren } from "react";
-import { Icons } from "../icons";
+import { Icons } from "@/app/components/icons";
 
 class ErrorBoundary extends Component<
   { text: string } & PropsWithChildren,

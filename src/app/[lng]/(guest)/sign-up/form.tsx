@@ -5,8 +5,8 @@ import * as R from "remeda";
 import Link from "next/link";
 import { Input } from "@/app/components/atoms/input";
 import { FormErrors } from "@/app/components/atoms/form-errors";
+import { SubmitButton } from "@/app/components/molecules/submit-button";
 import { signUpAction } from "./actions";
-import { SubmitButton } from "./submit-button";
 
 interface Props {
   lng: string;

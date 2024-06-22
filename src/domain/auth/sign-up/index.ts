@@ -2,9 +2,9 @@ import "server-only";
 
 import { extractSchemaErrors } from "@/domain/utils";
 import { formDataSchema } from "@/domain/auth/sign-up/schemas";
-import { userRepo } from "@/infra/database/repos/UserRepo";
+import { usersRepo } from "@/infra/database/repos/UsersRepo";
 import { hashPassword } from "@/infra/encryption/password";
-import { setSession } from "../session";
+import { setSession } from "@/domain/auth/session";
 
 interface ReturnType {
   errors: Record<string, string> | null;
@@ -26,7 +26,7 @@ export async function signUp(formData: FormData): Promise<ReturnType> {
       };
     }
 
-    const user = await userRepo.findByEmail(validatedFields.data.email);
+    const user = await usersRepo.findByEmail(validatedFields.data.email);
 
     if (user) {
       return {
@@ -38,7 +38,7 @@ export async function signUp(formData: FormData): Promise<ReturnType> {
 
     const hashedPassword = await hashPassword(validatedFields.data.password);
 
-    const { id } = await userRepo.create({
+    const { id } = await usersRepo.create({
       first_name: validatedFields.data.first_name,
       last_name: validatedFields.data.last_name,
       email: validatedFields.data.email,

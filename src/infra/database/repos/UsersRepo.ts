@@ -8,7 +8,7 @@ import {
 } from "@/entities/User";
 import { dbq } from "@/infra/database/connect";
 
-class UserRepo {
+class UsersRepo {
   public async findByEmailWithPassword(
     email: string,
   ): Promise<UserWithPassword | null> {
@@ -52,4 +52,4 @@ class UserRepo {
   }
 }
 
-export const userRepo = new UserRepo();
+export const usersRepo = new UsersRepo();

@@ -10,7 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/app/components/atoms/dropdown-menu";
-import { Icons } from "../icons";
+import { Icons } from "@/app/components/icons";
 
 export function LangSwitch() {
   const pathname = usePathname();

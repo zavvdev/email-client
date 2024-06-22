@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/domain/auth/session";
 import { DEFAULT_LOCALE, LOCALES } from "@/app/i18n/config";
 import { appUrl, getStartRoute, isAuthRoute } from "@/app/routes";
-import { getLangFromPathname } from "./app/i18n/utils";
+import { getLangFromPathname } from "@/app/i18n/utils";
 
 export const config = {
   matcher: [

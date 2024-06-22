@@ -3,7 +3,7 @@ import "server-only";
 import { extractSchemaErrors } from "@/domain/utils";
 import { formDataSchema } from "@/domain/auth/login/schemas";
 import { setSession } from "@/domain/auth/session";
-import { userRepo } from "@/infra/database/repos/UserRepo";
+import { usersRepo } from "@/infra/database/repos/UsersRepo";
 import { comparePasswords } from "@/infra/encryption/password";
 
 const notFoundError = () => {
@@ -31,7 +31,7 @@ export async function login(formData: FormData): Promise<ReturnType> {
       };
     }
 
-    const user = await userRepo.findByEmailWithPassword(
+    const user = await usersRepo.findByEmailWithPassword(
       validatedFields.data.email,
     );
 
