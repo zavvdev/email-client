@@ -4,8 +4,12 @@ import { emailsRepo } from "@/infra/database/repos/EmailsRepo";
 import { getSession } from "@/domain/auth/session";
 import { FOLDER_NAMES } from "@/domain/emails/config";
 import { Message } from "@/entities/Message";
-import { deleteMessageSchema, sendMessageSchema } from "./schemas";
-import { extractSchemaErrors } from "../utils";
+import {
+  deleteMessageSchema,
+  sendMessageSchema,
+  starMessageSchema,
+} from "@/domain/emails/schemas";
+import { extractSchemaErrors } from "@/domain/utils";
 
 export async function getMessagesCountByFolder() {
   const session = await getSession();
@@ -85,6 +89,35 @@ export async function deleteMessage(formData: FormData): Promise<boolean> {
     });
 
     await emailsRepo.deleteOne(validatedFields.id);
+
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export async function markMessage(formData: FormData): Promise<boolean> {
+  try {
+    const session = await getSession();
+
+    const validatedFields = starMessageSchema.parse({
+      id: Number(formData.get("id")),
+    });
+
+    const message = await emailsRepo.getOne(
+      session!.user_id,
+      validatedFields.id,
+    );
+
+    if (!message) {
+      throw new Error("Message not found");
+    }
+
+    if (message.starred) {
+      await emailsRepo.unstarOne(session!.user_id, validatedFields.id);
+    } else {
+      await emailsRepo.startOne(session!.user_id, validatedFields.id);
+    }
 
     return true;
   } catch {

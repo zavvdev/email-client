@@ -2,18 +2,17 @@
 
 import * as R from "remeda";
 import { useParams } from "next/navigation";
-import { Button } from "@/app/components/atoms/button";
-import { Icons } from "@/app/components/icons";
 import { ModalCompose } from "./modal-compose";
 import { ModalDelete } from "./modal-delete";
+import { MarkMessage } from "./mark-message";
 
 interface Props {
   t: Record<string, any>;
-  isMessageStarred?: boolean;
+  isStarred?: boolean;
   isNotFound?: boolean;
 }
 
-export function MessageToolbar({ t, isMessageStarred, isNotFound }: Props) {
+export function MessageToolbar({ t, isStarred, isNotFound }: Props) {
   const params = useParams();
 
   return (
@@ -21,15 +20,7 @@ export function MessageToolbar({ t, isMessageStarred, isNotFound }: Props) {
       <ModalCompose t={t.compose} />
       {!isNotFound && (
         <>
-          {R.isNonNullish(isMessageStarred) && (
-            <Button variant="ghost" size="icon" className="w-10">
-              {isMessageStarred ? (
-                <Icons.StarOff width="1.1rem" />
-              ) : (
-                <Icons.Star width="1.1rem" />
-              )}
-            </Button>
-          )}
+          {R.isNonNullish(isStarred) && <MarkMessage isStarred={isStarred} />}
           {R.isNonNullish(params.messageId) && <ModalDelete t={t.delete} />}
         </>
       )}

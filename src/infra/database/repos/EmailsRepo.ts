@@ -124,6 +124,20 @@ class EmailsRepo {
   public async deleteOne(id: number): Promise<void> {
     await dbq("DELETE FROM emails WHERE id = ?", [id]);
   }
+
+  public async startOne(userId: number, messageId: number): Promise<void> {
+    await dbq("INSERT INTO starred (user_id, email_id) VALUES (?, ?)", [
+      userId,
+      messageId,
+    ]);
+  }
+
+  public async unstarOne(userId: number, messageId: number): Promise<void> {
+    await dbq("DELETE FROM starred WHERE user_id = ? AND email_id = ?", [
+      userId,
+      messageId,
+    ]);
+  }
 }
 
 export const emailsRepo = new EmailsRepo();

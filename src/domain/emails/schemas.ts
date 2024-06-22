@@ -11,5 +11,9 @@ export const sendMessageSchema = t.object({
 });
 
 export const deleteMessageSchema = t.object({
-  id: t.number({ message: "required" }),
+  id: t.number(),
+});
+
+export const starMessageSchema = t.object({
+  id: t.number(),
 });

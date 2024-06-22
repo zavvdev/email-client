@@ -28,7 +28,7 @@ export default async function MessagePage({ params }: Props) {
     <div className="h-full flex flex-col">
       <MessageToolbar
         t={t("message_toolbar", { returnObjects: true })}
-        isMessageStarred={Boolean(message?.starred)}
+        isStarred={Boolean(message?.starred)}
         isNotFound={!message}
       />
       {message ? (
